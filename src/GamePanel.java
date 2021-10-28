@@ -6,6 +6,21 @@ import java.util.Random;
 
 public class GamePanel extends JPanel implements ActionListener{
     
+        static final int SCREEN_WIDTH = 600;
+        static final int SCREEN_HEIGHT = 600;
+        static final int UNIT_SIZE = 25;
+        static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / UNIT_SIZE;
+        static final int DELAY = 50;
+        final int x[] = new int[GAME_UNITS];
+        final int y[] = new int[GAME_UNITS];
+        int segments = 5;
+        int points;
+        int pointX;
+        int pointY;
+        char direction = 'r';
+
+
+
         // contructor -----------------------------------------
         GamePanel() { 
 
@@ -38,6 +53,7 @@ public class GamePanel extends JPanel implements ActionListener{
 
         }
 
+        // innerclass
         public class MyKeyAdapter extends KeyAdapter{
                 @Override
                 public void keyPressed(KeyEvent e){
