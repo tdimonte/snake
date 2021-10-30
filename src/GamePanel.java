@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
+import java.util.concurrent.DelayQueue;
 
 
 public class GamePanel extends JPanel implements ActionListener{
@@ -18,22 +19,35 @@ public class GamePanel extends JPanel implements ActionListener{
         int pointX;
         int pointY;
         char direction = 'r';
-
+        boolean running = false;
+        Timer timer;
+        Random random;
 
 
         // contructor -----------------------------------------
         GamePanel() { 
-
+                random = new Random();
+                this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+                this.setBackground(Color.BLACK);
+                this.setFocusable(true);
+                this.addKeyListener(new MyKeyAdapter());
+                startGame();
         }
 
         // methods --------------------------------------------
         public void startGame() {
-
+                newPoint();
+                running = true;
+                timer = new Timer(DELAY, this);
+                timer.start();
         }
         public void paintComponent(Graphics g) {
 
         }
         public void draw(Graphics g) {
+
+        }
+        public void newPoint(){
 
         }
         public void move() {
