@@ -56,7 +56,8 @@ public class GamePanel extends JPanel implements ActionListener{
 
         }
         public void newPoint(){
-
+                pointX = random.nextInt((int)(SCREEN_WIDTH/UNIT_SIZE))*UNIT_SIZE;
+                pointY = random.nextInt((int)(SCREEN_HEIGHT/UNIT_SIZE))*UNIT_SIZE;
         }
         public void move() {
 
