@@ -49,10 +49,13 @@ public class GamePanel extends JPanel implements ActionListener{
         public void draw(Graphics g) {
 
                 //***SHOW UNIT_SIZE GRID***
-                // for(int i = 0; i < SCREEN_HEIGHT/UNIT_SIZE; i++){
-                //         g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
-                //         g.drawLine(0, i*UNIT_SIZE, SCREEN_WIDTH, i*UNIT_SIZE);
-                // }
+                for(int i = 0; i < SCREEN_HEIGHT/UNIT_SIZE; i++){
+                        g.drawLine(i*UNIT_SIZE, 0, i*UNIT_SIZE, SCREEN_HEIGHT);
+                        g.drawLine(0, i*UNIT_SIZE, SCREEN_WIDTH, i*UNIT_SIZE);
+                }
+
+                g.setColor(Color.red);
+                g.fillRect(pointX, pointY, UNIT_SIZE, UNIT_SIZE);
 
         }
         public void newPoint(){
@@ -60,6 +63,15 @@ public class GamePanel extends JPanel implements ActionListener{
                 pointY = random.nextInt((int)(SCREEN_HEIGHT/UNIT_SIZE))*UNIT_SIZE;
         }
         public void move() {
+                for(int i = segments; i > 0; i--) {
+                        x[i] = x[i-1];
+                        y[i] = y[i-1];
+                }
+
+                switch(direction) {
+                        case 'u':
+                                y[0] = y[0] - UNIT_SIZE;
+                }
 
         }
         public void checkPoints() {
