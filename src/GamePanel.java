@@ -14,7 +14,7 @@ public class GamePanel extends JPanel implements ActionListener{
         static final int DELAY = 50;
         final int x[] = new int[GAME_UNITS];
         final int y[] = new int[GAME_UNITS];
-        int segments = 5;
+        int segments = 1;
         int points;
         int pointX;
         int pointY;
@@ -57,6 +57,19 @@ public class GamePanel extends JPanel implements ActionListener{
                 g.setColor(Color.red);
                 g.fillRect(pointX, pointY, UNIT_SIZE, UNIT_SIZE);
 
+                for(int i = 0; i < segments; i++) {
+                        // snake head
+                        if (i == 0) {
+                                g.setColor(Color.WHITE);
+                                g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+                        }
+                        // snake body
+                        else {
+                                g.setColor(Color.GRAY);
+                                g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
+                        }
+                }
+
         }
         public void newPoint(){
                 pointX = random.nextInt((int)(SCREEN_WIDTH/UNIT_SIZE))*UNIT_SIZE;
@@ -71,6 +84,17 @@ public class GamePanel extends JPanel implements ActionListener{
                 switch(direction) {
                         case 'u':
                                 y[0] = y[0] - UNIT_SIZE;
+                                break;
+                        case 'd':
+                                y[0] = y[0] + UNIT_SIZE;
+                                break;
+                        case 'r':
+                                x[0] = x[0] + UNIT_SIZE;
+                                break;
+                        case 'l':
+                                x[0] = x[0] - UNIT_SIZE;
+                                break;
+                        
                 }
 
         }
