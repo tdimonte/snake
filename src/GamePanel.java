@@ -14,7 +14,7 @@ public class GamePanel extends JPanel implements ActionListener{
         static final int DELAY = 50;
         final int x[] = new int[GAME_UNITS];
         final int y[] = new int[GAME_UNITS];
-        int segments = 1;
+        int segments = 10;
         int points;
         int pointX;
         int pointY;
@@ -150,7 +150,24 @@ public class GamePanel extends JPanel implements ActionListener{
         public class MyKeyAdapter extends KeyAdapter{
                 @Override
                 public void keyPressed(KeyEvent e){
-
+                        switch(e.getKeyCode()) {
+                                case KeyEvent.VK_UP:
+                                        if(direction != 'd') {
+                                                direction = 'u';
+                                        }
+                                case KeyEvent.VK_DOWN:
+                                        if(direction != 'u') {
+                                                direction = 'd';
+                                        }
+                                case KeyEvent.VK_RIGHT:
+                                        if(direction != 'l') {
+                                                direction = 'r';
+                                        }
+                                case KeyEvent.VK_LEFT:
+                                        if(direction != 'r') {
+                                                direction = 'l';
+                                        }                                                      
+                        }
                 }
         }
 
